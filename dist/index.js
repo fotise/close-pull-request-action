@@ -2042,6 +2042,9 @@ const main = async () => {
   const pr = payload.pull_request;
   console.log(`The event pull_request: ${pr}`);
 
+  console.log(`Token: ${token}`);
+
+
   if(!pr) {
     return;
   }
