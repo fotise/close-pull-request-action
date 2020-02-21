@@ -36,7 +36,7 @@ const main = async () => {
   console.log(`Token: ${token}`);
 
 
-  if(!pr) {
+  if(!context.payload.pull_request) {
     return;
   }
 
@@ -44,7 +44,7 @@ const main = async () => {
     octokit,
     context,
     "THIS is a comment: Contribution License Agreement signed by " +
-      pr.user.login
+    context.payload.pull_request.user.login
   );
 
   await closeIssue(octokit, context);
