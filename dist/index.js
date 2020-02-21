@@ -2038,7 +2038,7 @@ const main = async () => {
   const payload = JSON.stringify(context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 
-  const pr = context.payload.pull_request;
+  const pr = payload.pull_request;
   console.log(`The event pull_request: ${pr}`);
 
   if(!pr) {
