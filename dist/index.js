@@ -2019,12 +2019,15 @@ const { GitHub, context } = __webpack_require__(469)
 
 async function addComment(octokit, context, comment) {
   // return context.github.issues.createComment(context.issue({ body: comment }));
-  return octokit.issues.createComment(context.issue({ body: comment }));
+  return octokit.issue.addComment(octokit, context, octokit.issues.createComment());
+
+
+  // return octokit.issues.createComment(comment)   (  context.issue({ body: comment }));
 }
 
-async function closeIssue(octokit, context) {
-  return octokit.issues.update(context.issue({ state: "closed" }));
-}
+// async function closeIssue(octokit, context) {
+//   return octokit.issues.update(context.issue({ state: "closed" }));
+// }
 
 const main = async () => {
   const token = core.getInput('github-token')
