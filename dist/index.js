@@ -2049,7 +2049,6 @@ const main = async () => {
 
   console.log(`Token: ${token}`);
 
-
   if(!context.payload.pull_request) {
     return;
   }
@@ -2061,7 +2060,7 @@ const main = async () => {
     context.payload.pull_request.user.login
   );
 
-  await closeIssue(octokit, context);
+  // await closeIssue(octokit, context);
 
 //   await octokit.pulls.createReview({
 //     ...context.repo,
