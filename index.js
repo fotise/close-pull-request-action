@@ -23,10 +23,14 @@ const main = async () => {
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify( context.payload, undefined, 2)
+  console.log(`The event payload parsed: ${payload}`);
+  console.log(`===================================================================`);
   console.log(`The event payload not parsed: ${context.payload}`);
+  console.log(`===================================================================`);
   console.log(`The event payload PR: ${context.payload.pull_request}`);
+  console.log(`===================================================================`);
 
-  const pr = payload.pull_request;
+  const pr = context.payload.pull_request;
   console.log(`The event pull_request: ${pr}`);
 
   console.log(`Token: ${token}`);
