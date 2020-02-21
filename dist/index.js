@@ -2036,7 +2036,7 @@ const main = async () => {
   core.setOutput("time", time);
 
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify() ( context.payload, undefined, 2)
+  const payload = JSON.stringify( context.payload, undefined, 2)
   console.log(`The event payload not parsed: ${context.payload}`);
   console.log(`The event payload PR: ${context.payload.pull_request}`);
 
