@@ -2017,19 +2017,20 @@ module.exports = require("os");
 const core = __webpack_require__(470)
 const { GitHub, context } = __webpack_require__(469)
 
-async function addComment(context, comment) {
-  return context.github.issues.createComment(context.issue({ body: comment }));
+async function addComment(octokit, context, comment) {
+  // return context.github.issues.createComment(context.issue({ body: comment }));
+  return octokit.issues.createComment(context.issue({ body: comment }));
 }
 
-async function closeIssue(context) {
-  return context.github.issues.update(context.issue({ state: "closed" }));
+async function closeIssue(octokit, context) {
+  return octokit.issues.update(context.issue({ state: "closed" }));
 }
 
 const main = async () => {
-  // const token = core.getInput('github-token')
+  const token = core.getInput('github-token')
   // const number = core.getInput('number')
 
-  //const octokit = new GitHub(token)
+  const octokit = new GitHub(token)
 
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
@@ -2046,12 +2047,13 @@ const main = async () => {
   }
 
   await addComment(
+    octokit,
     context,
     "THIS is a comment: Contribution License Agreement signed by " +
       pr.user.login
   );
 
-  await closeIssue(context);
+  await closeIssue(octokit, context);
 
 //   await octokit.pulls.createReview({
 //     ...context.repo,
