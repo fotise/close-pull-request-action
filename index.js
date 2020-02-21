@@ -23,7 +23,13 @@ const main = async () => {
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
-  const pr = payload.pull_request;
+
+  const pr = context.payload.pull_request;
+  console.log(`The event pull_request: ${pr}`);
+
+  if(!pr) {
+    return;
+  }
 
   await addComment(
     context,
@@ -31,8 +37,8 @@ const main = async () => {
       pr.user.login
   );
 
-  return closeIssue(context);
-  
+  await closeIssue(context);
+
 //   await octokit.pulls.createReview({
 //     ...context.repo,
 //     pull_number: number,s
