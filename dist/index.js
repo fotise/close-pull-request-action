@@ -2015,7 +2015,9 @@ module.exports = require("os");
 
 
 const core = __webpack_require__(470)
-const { GitHub, context } = __webpack_require__(469)
+// const { GitHub, context } = require('@actions/github')
+const github = __webpack_require__(469);
+
 
 // async function addComment(octokit, context, comment) {
   // return context.github.issues.createComment(context.issue({ body: comment }));
@@ -2033,8 +2035,19 @@ const main = async () => {
   const token = core.getInput('github-token')
   // const number = core.getInput('number')
 
-  const octokit = new GitHub(token)
+  const context = github.context;
+  if (context.payload.pull_request == null) {
+      core.setFailed('No pull request found.');
+      return;
+  }
+  const pull_request_number = context.payload.pull_request.number;
 
+  const octokit = new github.GitHub(token)
+  const new_comment = octokit.issues.createComment({
+    ...context.repo,
+    issue_number: pull_request_number,
+    body: "CLA message"
+  });
   core.setFailed("Please set project or pattern input");
   
   // const time = (new Date()).toTimeString();
