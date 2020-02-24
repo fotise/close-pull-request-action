@@ -22,6 +22,12 @@ const main = async () => {
     body: "CLA message"
   });
 
+  await octokit.pulls.update({
+    ...context.repo,
+    pull_number: context.issue.number,
+    state: "closed"
+  });
+
   core.setFailed("Please set project or pattern input");
 
 }
