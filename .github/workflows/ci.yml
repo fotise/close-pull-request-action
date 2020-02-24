@@ -1,7 +1,10 @@
-name: CI
+name: CLA
+branding:
+  icon: 'alert-circle'
+  color: 'blue'
 on: [push, pull_request]
 jobs:
-  build:
+  checkForSignedCLA:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
