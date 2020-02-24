@@ -1,8 +1,8 @@
 name: Approve Pull Request
-author: juliangruber
-description: 'A GitHub Action for approving pull requests'
+author: fotise
+description: 'A GitHub Action for close pull requests'
 branding:
-  icon: 'git-pull-request'
+  icon: 'alert-circle'
   color: green
 inputs:
   github-token:

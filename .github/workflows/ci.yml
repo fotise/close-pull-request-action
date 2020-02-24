@@ -1,7 +1,5 @@
 name: CLA
-branding:
-  icon: 'alert-circle'
-  color: 'blue'
+
 on: [push, pull_request]
 jobs:
   checkForSignedCLA:
