@@ -2,7 +2,7 @@ name: Approve Pull Request
 author: fotise
 description: 'A GitHub Action for close pull requests'
 branding:
-  icon: 'alert-circle'
+  icon: '2017'
   color: green
 inputs:
   github-token:
