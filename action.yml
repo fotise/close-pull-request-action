@@ -1,15 +1,15 @@
-name: Approve Pull Request
+name: Close Pull Request with custom comment
 author: fotise
-description: 'A GitHub Action for close pull requests'
+description: 'A GitHub Action for close pull requests, adding a custom comment'
 branding:
-  icon: '2017'
+  icon: 'alert-circle'
   color: green
 inputs:
   github-token:
     description: 'GitHub Token'
     required: true
-  number:
-    description: 'Pull Request number'
+  message:
+    description: 'Message displayed in pr comment'
     required: true
 runs:
   using: 'node12'

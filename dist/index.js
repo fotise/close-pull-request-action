@@ -2019,8 +2019,8 @@ const github = __webpack_require__(469);
 
 
 const main = async () => {
-  const token = core.getInput('github-token')
-  // const number = core.getInput('number')
+  const token = core.getInput('github-token');
+  const message = core.getInput('message');
 
   const context = github.context;
   if (context.payload.pull_request == null) {
@@ -2033,7 +2033,7 @@ const main = async () => {
   const new_comment = octokit.issues.createComment({
     ...context.repo,
     issue_number: pull_request_number,
-    body: "CLA message"
+    body: message
   });
 
   await octokit.pulls.update({
@@ -2042,7 +2042,7 @@ const main = async () => {
     state: "closed"
   });
 
-  core.setFailed("Please set project or pattern input");
+  // core.setFailed("Please set project or pattern input");
 
 }
 
